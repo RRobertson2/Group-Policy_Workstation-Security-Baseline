@@ -184,3 +184,4 @@ Attempt to open Task Manager as Bucky Barnes. A warning or access denial message
 <img src="https://github.com/user-attachments/assets/b7f28d34-5d28-4de4-9a6f-759337d21427" width="1000"><br>
 
 
+**Keywords:** Group Policy, GPO, Windows Server 2022, Active Directory, Workstation Security, Sysadmin, IT Lab, Windows 11
