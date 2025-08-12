@@ -87,12 +87,66 @@ Policy Path: User Configuration → Administrative Templates → Control Panel �
 
 <hr style="border: 0.15px solid rgba(0, 0, 0, 0.05);">
 
-### Step 6: Login Restored and Issue Resolved
-User (Bucky Barnes) is now successfully able to log in. Account is no longer locked and regular access is restored.<br>
+### Step 6: Block Registry Editor Access
+
+Policy Path: User Configuration → Administrative Templates → System → Prevent access to registry editing tools<br>
 <br>
-- Account access successfully restored
-- Steps followed to reset and unlock user properly
-- Verified login success after password reset<br>
+- Prevents modifications to Windows Registry.
+- Stops unauthorized or harmful registry changes.
+- Enable “Prevent access to registry editing tools” → Apply → OK.<br>
 <br>
-<img src="https://github.com/user-attachments/assets/e8aecc5b-17f6-4b82-81b2-dbc91ec3ebcd" width="1000"><br>
+<img src="https://github.com/user-attachments/assets/6fdb06cf-190a-4789-99f1-eb4fff90f1d6" width="1000"><br>
+
+<hr style="border: 0.15px solid rgba(0, 0, 0, 0.05);">
+
+### Step 7: Block Removable Storage Access
+
+Policy Path: Computer Configuration → Administrative Templates → System → Removable Storage Access<br>
+<br>
+- Deny read/write to USB and external drives.
+- Prevents data theft and malware from removable devices.
+- Enable “All Removable Storage classes: Deny all access” → Apply → OK.<br>
+<br>
+<img src="https://github.com/user-attachments/assets/108d46db-de04-44a4-a6f0-e85cb2af725e" width="1000"><br>
+<br>
+<img src="https://github.com/user-attachments/assets/8932ea83-2025-476e-a44c-b7e7b0fd5a90" width="1000"><br>
+
+<hr style="border: 0.15px solid rgba(0, 0, 0, 0.05);">
+
+### Step 8: Disable Task Manager
+
+Policy Path: User Configuration → Administrative Templates → System → Ctrl+Alt+Del Options → Remove Task Manager<br>
+<br>
+- Prevents users from ending processes or viewing running tasks.
+- Stops termination of security-related processes or critical applications.
+- Enable “Remove Task Manager” → Apply → OK.<br>
+<br>
+<img src="https://github.com/user-attachments/assets/1e008d05-4103-4640-94ac-52221275a603" width="1000"><br>
+
+<hr style="border: 0.15px solid rgba(0, 0, 0, 0.05);">
+
+### Step 9: Remove Change Password Option
+
+Policy Path: User Configuration → Administrative Templates → System → Ctrl+Alt+Del Options → Remove Change Password<br>
+<br>
+- Prevents users from changing their Windows password.
+- Enforces password change policies set by administrators only.
+- Enable “Remove Change Password” → Apply → OK.<br>
+<br>
+<img src="
+  "><br>
+
+<hr style="border: 0.15px solid rgba(0, 0, 0, 0.05);">
+
+### Step 10: Enforce the Group Policy
+
+Right-click the Workstation Security Baseline policy and select Enforced.<br>
+<br>
+- Ensures the policy takes precedence and applies fully.
+- Prevents other GPOs from overriding this baseline policy.
+- Right-click GPO → Enforced.<br>
+<br>
+<img src="
+  " width="1000"><br>
+
 
