@@ -21,74 +21,69 @@ Implement a Workstation Security Baseline Group Policy Object (GPO) to enforce r
 
 <hr style="border: 0.15px solid rgba(0, 0, 0, 0.05);">
   
-### Step 1: Login Failure Reported by User
+### Step 1: Access Group Policy Management
 
-User reports they are unable to sign in and receive the following error:<br>
-
-“The referenced account is currently locked out and may not be logged on to.”<br>
+Open Server Manager, navigate to Tools, and select Group Policy Management. This console allows centralized management of security and configuration settings across multiple computers in the domain.<br>
 <br>
-This commonly happens due to multiple failed login attempts caused by saved credentials on devices, mapped network drives, or background services repeatedly trying to authenticate.<br>
+- Launch the Group Policy Management Console.
+- Required to create and manage Group Policy Objects (GPOs).
+- Server Manager → Tools → Group Policy Management.<br>
 <br>
-- User’s account is locked due to multiple failed authentication attempts
-- Password was entered incorrectly too many times, often by background processes
-- Investigate potential causes including saved passwords on other systems or devices<br>
-<br>
-<img src="https://github.com/user-attachments/assets/01c80fde-243c-4f33-8026-3ad4e1e73307" width="1000"><br>
+<img src="https://github.com/user-attachments/assets/c3d81fac-128d-49b9-9414-87458be1755c" width="1000"><br>
 <br>
 
 <hr style="border: 0.15px solid rgba(0, 0, 0, 0.05);">
 
-### Step 2: Locate User in Active Directory
+### Step 2: Create New Group Policy Object
 
-Launch Active Directory Users and Computers from Server Manager. Ensure Advanced Features is enabled from the "View" tab.
-Search the user (e.g., Bucky Barnes) in the directory and go to Properties > Object tab to find the user's OU path.<br>
+In the Group Policy Objects folder, right-click and select New. Name the GPO Workstation Security Baseline.<br>
 <br>
-- Find the user’s exact OU location in AD
-- AD may have multiple OUs; exact path is needed to manage the account
-- Enable Advanced Features, then use Properties > Object to view the path<br>
+- Create a new GPO container.
+- Establish a baseline security configuration for domain workstations.
+- Right-click → New → Enter “Workstation Security Baseline”.<br>
 <br>
-<img src="https://github.com/user-attachments/assets/7acfc6d4-6893-4746-a23b-da2e222587cc" width="1000"><br>
+<img src="https://github.com/user-attachments/assets/42189e5e-dc8f-4b65-94a6-baffffef46ff" width="1000"><br>
 
 
 <hr style="border: 0.15px solid rgba(0, 0, 0, 0.05);">
 
-### Step 3: Reset User Password
-Navigate to the user's OU (e.g., Management > Bucky Barnes).<br>
+### Step 3: Configure Delegation Permissions
+Click the Workstation Security Baseline policy, go to the Delegation tab, and add the user Bucky Barnes with Read permissions.<br>
 <br>
-Right-click the user, select All Tasks > Reset Password, assign a temporary password, and unlock account.<br>
+- Assign read-only rights to a user.
+- Allows a user or admin to review GPO settings without making changes.
+- Select GPO → Delegation → Add → Assign Read permissions.<br>
 <br>
-<br>
-- Reset the locked account with a temporary password
-- Allows user to regain access after account lockout
-- Right-click user > Reset Password > enter and confirm new password<br>
-<br>
-<img src="https://github.com/user-attachments/assets/c8fd1961-dfd9-4175-9932-050f57433e59" width="1000"><br>
-<br>
-<br>
-<img src="https://github.com/user-attachments/assets/70b989ff-f49b-4e41-9558-cb56ab6c81be" width="1000"><br>
+<img src="https://github.com/user-attachments/assets/960e1862-be8b-46be-b536-03930ff032d1" width="1000"><br>
 <br>
 
 <hr style="border: 0.15px solid rgba(0, 0, 0, 0.05);">
 
-### Step 4: Force User to Change Password at Next Login
-In the Account tab of the user's properties, check the box for User must change password at next logon.<br>
+### Step 4: Edit the New Group Policy Object
+Right-click Workstation Security Baseline and select Edit. Navigate through User Configuration and Computer Configuration folders to locate settings for:<br>
+- Control Panel and Settings App restrictions
+- Registry Editor access
+- Block storage/removable media
+- Restrict application execution
+- Desktop environment restrictions
+- Remove change password option
 <br>
-- Enforce password change upon next login
-- Encourages strong, personalized password creation
-- Set policy in Account tab of AD user properties<br>
+- Begin applying restrictions.
+- Prevent unauthorized system changes, protect data, and enforce security standards.
+- Right-click GPO → Edit → Select relevant folders and settings.<br>
 <br>
-<img src="https://github.com/user-attachments/assets/7607c046-66e9-487d-8fd8-7052dbf37bcf" width="1000"><br>
+<img src="https://github.com/user-attachments/assets/655a92d5-cedf-4b76-b8ed-e0e8aff61586" width="1000"><br>
 <br>
 <hr style="border: 0.15px solid rgba(0, 0, 0, 0.05);">
 
-### Step 5: User Creates New Secure Password
-User logs in with the temporary password and is prompted to set a new one. Ensure password policy is enforced for strength.<br>
+### Step 5: Restrict Control Panel & Settings App
+Policy Path: User Configuration → Administrative Templates → Control Panel → Prohibit access to Control Panel and PC settings<br>
 <br>
-- User sets their own new password
-- Helps prevent shared/default password reuse
-- Occurs automatically on login after previous step<br>
+- Removes ability to open Control Panel and Windows Settings.
+- Prevents changes to system configurations by standard users.
+- Enable “Prohibit access to Control Panel and PC settings” → Apply → OK.<br>
 <br>
-<img src="https://github.com/user-attachments/assets/601986f1-132b-4803-9746-0629490e2277" width="1000"><br>
+<img src="https://github.com/user-attachments/assets/7b407b9d-ac49-4f93-960f-b4c4ffca566d" width="1000"><br>
 
 <hr style="border: 0.15px solid rgba(0, 0, 0, 0.05);">
 
