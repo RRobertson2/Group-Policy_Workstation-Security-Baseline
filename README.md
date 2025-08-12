@@ -133,8 +133,7 @@ Policy Path: User Configuration → Administrative Templates → System → Ctrl
 - Enforces password change policies set by administrators only.
 - Enable “Remove Change Password” → Apply → OK.<br>
 <br>
-<img src="
-  "><br>
+<img src="https://github.com/user-attachments/assets/214ba2dd-c232-4ee6-80ed-4a27183eca0a" width="1000"><br>
 
 <hr style="border: 0.15px solid rgba(0, 0, 0, 0.05);">
 
@@ -146,7 +145,42 @@ Right-click the Workstation Security Baseline policy and select Enforced.<br>
 - Prevents other GPOs from overriding this baseline policy.
 - Right-click GPO → Enforced.<br>
 <br>
-<img src="
-  " width="1000"><br>
+<img src="https://github.com/user-attachments/assets/98ef6a1d-5080-40ef-9ac4-d949d1c96fc7" width="1000"><br>
+
+<hr style="border: 0.15px solid rgba(0, 0, 0, 0.05);">
+
+### Step 11: Force Group Policy Update on Client Machine
+
+Sign in as Bucky Barnes on a Windows 11 workstation. Open Command Prompt and run:<br>
+gpupdate /force<br>
+<br>
+- Forces the workstation to apply the latest GPO changes.
+- Ensures the new policy is active without waiting for automatic refresh.
+- Command Prompt → gpupdate /force.<br>
+<br>
+<img src="https://github.com/user-attachments/assets/f9a355f7-78c2-4f49-8a63-fdd28e33fb59" width="1000"><br>
+
+<hr style="border: 0.15px solid rgba(0, 0, 0, 0.05);">
+
+### Step 12: Verify Applied Policies
+Review the Applied Group Policy Objects list and confirm “Workstation Security Baseline” is active. Run the following command:<br>
+gpresult /r<br>
+<br>
+- Generates Resultant Set of Policy (RSOP) data.
+- Confirms the policy is applied to the user/computer.
+- Command Prompt → gpresult /r.<br>
+<br>
+<img src="https://github.com/user-attachments/assets/a14b16f1-5d02-4538-a7ef-71f923f28d79" width="1000"><br>
+
+<hr style="border: 0.15px solid rgba(0, 0, 0, 0.05);">
+
+### Step 13: Test Group Policy Restrictions
+Attempt to open Task Manager as Bucky Barnes. A warning or access denial message should appear, confirming the policy works.<br>
+<br>
+- Validate the applied restriction.
+- Ensures the security policy is functioning as intended.
+- Ctrl+Shift+Esc or Ctrl+Alt+Del → Select Task Manager → Observe block message.<br>
+<br>
+<img src="https://github.com/user-attachments/assets/b7f28d34-5d28-4de4-9a6f-759337d21427" width="1000"><br>
 
 
